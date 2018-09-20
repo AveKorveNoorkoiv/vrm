@@ -13,6 +13,14 @@ sudo apt-get install php7.2-cli
 * [composer](https://getcomposer.org/download/)
 
 ### Installing
+
+# test
+To install the software you have following options:
+Then you need to have composer installed in your computer.
+And then you need to install composer packages in your project folder.
+```
+composer install
+
 To install the software you have following options:
 Then you need to have composer installed in your computer.
 And then you need to install composer packages in your project folder.
@@ -32,4 +40,8 @@ At the moment we have one version, which is 1.0.0
 * **Kadri Vahtramäe** - *Initial work* - [Kadri Vahtramäe](https://gitlab.com/KadriVahtramae)
 See also the list of [contributors](www.i-smith.ee) who participated in this project.
 ## License
+<<<<<<< HEAD
 This project is licensed under the MIT License.
+=======
+This project is licensed under the MIT License.
+>>>>>>> 898ccec5aaed95ef66efce18848c0720c9193e74
