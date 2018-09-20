@@ -13,14 +13,6 @@ sudo apt-get install php7.2-cli
 * [composer](https://getcomposer.org/download/)
 
 ### Installing
-
-# test
-To install the software you have following options:
-Then you need to have composer installed in your computer.
-And then you need to install composer packages in your project folder.
-```
-composer install
-
 To install the software you have following options:
 Then you need to have composer installed in your computer.
 And then you need to install composer packages in your project folder.
