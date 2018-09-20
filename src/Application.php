@@ -2,8 +2,13 @@
 
 namespace BookingApp;
 
+use BookingApp\Controllers\CreateBookingController;
+use BookingApp\Controllers\ListBookingsController;
 use Silex\Application as SilexApplication;
 use Silex\Provider\DoctrineServiceProvider;
+use Silex\Provider\FormServiceProvider;
+use Silex\Provider\LocaleServiceProvider;
+use Silex\Provider\TranslationServiceProvider;
 use Silex\Provider\TwigServiceProvider;
 
 /**
@@ -38,9 +43,14 @@ class Application extends SilexApplication
                 'path' => __DIR__.'/../database/app.db',
             ],
         ]);
+
+        $this->register(new FormServiceProvider());
+        $this->register(new LocaleServiceProvider());
+        $this->register(new TranslationServiceProvider(), [
+            'translator.domains' => [],
+        ]);
     }
 
-        // Creating a table if it doesn't exist yet
     /**
      * Creates all needed tables to database if they don't exist.
      */
@@ -69,8 +79,19 @@ class Application extends SilexApplication
      */
     private function configureControllers()
     {
-        $this->get('/bookings/create', function () {
-            return $this['twig']->render('base.html.twig');
-        });
+        $this
+            ->match('/bookings/create', new CreateBookingController(
+                $this['form.factory'],
+                $this['twig'],
+                $this['db']
+            ))
+            ->method('GET|POST')
+            ->bind('booking_form')
+        ;
+
+        $this
+            ->get('/bookings', new ListBookingsController($this['db'], $this['twig']))
+            ->bind('booking_list')
+        ;
     }
 }
